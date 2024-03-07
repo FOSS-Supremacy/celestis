@@ -2,6 +2,8 @@
 
 A space game inspired by [Solar 2](https://store.steampowered.com/app/97000/Solar_2/)
 
+## Motivation
+
 Solar 2 is a great and fun game, but it's too simple and lacks multiplayer.
 
 We plan to expand the Solar 2 idea to another level.
