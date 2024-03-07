@@ -17,6 +17,12 @@ We plan to expand the Solar 2 idea to another level.
 - Alliances
 - Wars
 
+## Chat
+
+You can join in our discussion rooms on Matrix [here](https://matrix.to/#/#foss-supremacy-join:matrix.org).
+
+Once you join, request for an invite to the Matrix space.
+
 ## How To Contribute
 
 - Download the [Godot Engine](https://godotengine.org/) (normal variant, not C#)
