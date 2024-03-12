@@ -21,11 +21,11 @@ We plan to expand the Solar 2 idea to another level.
 
 ## Chat
 
-We have a Discord server for community discussions, you can join [here](https://discord.gg/d9ca4U64H4).
+You can join in our Matrix [here](https://matrix.to/#/#foss-supremacy-join:matrix.org).
 
-The developer discussions happen on Matrix, you can join [here](https://matrix.to/#/#foss-supremacy-join:matrix.org).
+(Once you join, request for an invite to the Matrix space)
 
-Once you join, request for an invite to the Matrix space.
+You can also join in our Discord server [here](https://discord.gg/d9ca4U64H4).
 
 ## How To Contribute
 
