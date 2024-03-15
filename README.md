@@ -19,6 +19,10 @@ We plan to expand the Solar 2 idea to another level.
 - Alliances
 - Wars
 
+## Game Design
+
+- [Game Design](gdd.md)
+
 ## Chat
 
 You can join in our Matrix [here](https://matrix.to/#/#foss-supremacy-join:matrix.org).
