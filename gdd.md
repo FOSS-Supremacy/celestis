@@ -20,9 +20,25 @@ A star with 4 planet orbits will have a protection shield.
 
 The star only make orbits with planets and absorb them to increase the mass, the mass quantity will change the star color from yellow to red.
 
+## Nomads
+
+There will be planets and spaceships lacking a star, they will attack you if you don't make a orbit with them.
+
+## Star Evolution
+
 After some mass, the star will become a neutron star or black hole after a supernova.
 
 The supernova explosion will destroy any solar system closer.
+
+### Neutron Star
+
+A neutron star has a strong gravity force and kill the life of planets lacking a protection field, thus you can't grow life on your solar system, if your planets lost the protection shield in a battle, you need to make a orbit with a nomad life planet.
+
+### Black Hole
+
+A black hole don't move but will lock anything that comes closer, if their orbit is empty they will be invisible.
+
+You can discover them if the light of your star is distorted.
 
 ## War
 
