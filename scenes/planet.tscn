@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://djwunliuh7opd"]
+
+[ext_resource type="OccluderPolygon2D" uid="uid://dhxlba7wqg83g" path="res://assets/light_occluder.tres" id="1_ud8ws"]
+
+[node name="planet" type="Node2D"]
+scale = Vector2(0.4, 0.4)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2(0.4, 0.4)
+color = Color(0.119882, 0.0559982, 0, 1)
+polygon = PackedVector2Array(-22.7006, -42.7119, -31.2134, -37.017, -39.7261, -28.4746, -43.9825, -21.3559, -46.8201, -12.8136, -48.2389, -4.27118, -48.2389, 7.11865, -45.4013, 18.5085, -39.7261, 28.4746, -32.6322, 35.5932, -22.7006, 42.7119, -11.3503, 46.9831, 0, 48.4068, 8.51276, 46.9831, 19.8631, 44.1356, 29.7946, 38.4407, 35.4698, 32.7458, 41.145, 25.6271, 43.8889, 20.1202, 46.8201, 12.8136, 48.2389, 4.27121, 48.2389, -8.54236, 45.4013, -17.0847, 42.5637, -24.2034, 31.2134, -37.017, 22.7007, -42.7119, 12.7692, -46.9831, -1.41876, -48.4068, -12.7691, -46.9831)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Polygon2D"]
+occluder = ExtResource("1_ud8ws")

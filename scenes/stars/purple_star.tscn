@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsnkyp32dx3kw"]
+
+[ext_resource type="Texture2D" uid="uid://6jnwyetfrmc1" path="res://assets/star.jpg" id="1_l4usd"]
+
+[node name="red_star" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2(0.766, 0.705)
+color = Color(0.991158, 0.000695971, 0.971711, 1)
+polygon = PackedVector2Array(-22.7006, -42.7119, -31.2134, -37.017, -39.7261, -28.4746, -43.9825, -21.3559, -46.8201, -12.8136, -48.2389, -4.27118, -48.2389, 7.11865, -45.4013, 18.5085, -39.7261, 28.4746, -32.6322, 35.5932, -22.7006, 42.7119, -11.3503, 46.9831, 0, 48.4068, 8.51276, 46.9831, 19.8631, 44.1356, 29.7946, 38.4407, 35.4698, 32.7458, 41.145, 25.6271, 43.8889, 20.1202, 46.8201, 12.8136, 48.2389, 4.27121, 48.2389, -8.54236, 45.4013, -17.0847, 42.5637, -24.2034, 31.2134, -37.017, 22.7007, -42.7119, 12.7692, -46.9831, -1.41876, -48.4068, -12.7691, -46.9831)
+
+[node name="PointLight2D" type="PointLight2D" parent="Polygon2D"]
+scale = Vector2(2.96694, 2.70724)
+color = Color(0.596863, 0.00418699, 0.983795, 0.454902)
+energy = 16.0
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+shadow_filter_smooth = 0.2
+texture = ExtResource("1_l4usd")

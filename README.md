@@ -8,6 +8,22 @@ Solar 2 is a great and fun game, but it's too simple and lacks multiplayer.
 
 We plan to expand the Solar 2 idea to another level.
 
+## Why Godot?
+
+The Godot engine allows you to save a lot of time in development because of the node system, where the relationship between the game components is very easily and fast to implement things.
+
+Also because of GDScript, the Godot scripting language allows you to write less code to implement things.
+
+## Screenshots
+
+![Screenshot](screenshots/image1.png)
+![Screenshot](screenshots/image2.png)
+![Screenshot](screenshots/image3.png)
+![Screenshot](screenshots/image4.png)
+![Screenshot](screenshots/image5.png)
+![Screenshot](screenshots/image6.png)
+![Screenshot](screenshots/image7.png)
+
 ## Goals
 
 - Reallistic celestial bodies
@@ -22,6 +38,14 @@ We plan to expand the Solar 2 idea to another level.
 ## Game Design
 
 - [Game Design](gdd.md)
+
+## Controls
+
+- Arrow Keys/WASD - Move the player's planet
+- I - Move the free camera up
+- K - Move the free camera down
+- J - Move the free camera left
+- L - Move the free camera right
 
 ## Chat
 
