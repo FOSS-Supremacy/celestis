@@ -12,13 +12,13 @@ extends Node2D
 @onready var planet10 = $planet10
 
 func _physics_process(delta):
-		planet1.rotation = planet1.rotation + deg_to_rad(float(90)) * delta
-		planet2.rotation = planet2.rotation + deg_to_rad(float(60)) * delta
-		planet3.rotation = planet3.rotation + deg_to_rad(float(40)) * delta
-		planet4.rotation = planet4.rotation + deg_to_rad(float(30)) * delta
-		planet5.rotation = planet5.rotation + deg_to_rad(float(20)) * delta
-		planet6.rotation = planet6.rotation + deg_to_rad(float(15)) * delta
-		planet7.rotation = planet7.rotation + deg_to_rad(float(7)) * delta
-		planet8.rotation = planet8.rotation + deg_to_rad(float(5)) * delta
+		planet1.rotation = planet1.rotation + deg_to_rad(float(27)) * delta
+		planet2.rotation = planet2.rotation + deg_to_rad(float(24)) * delta
+		planet3.rotation = planet3.rotation + deg_to_rad(float(21)) * delta
+		planet4.rotation = planet4.rotation + deg_to_rad(float(18)) * delta
+		planet5.rotation = planet5.rotation + deg_to_rad(float(15)) * delta
+		planet6.rotation = planet6.rotation + deg_to_rad(float(12)) * delta
+		planet7.rotation = planet7.rotation + deg_to_rad(float(9)) * delta
+		planet8.rotation = planet8.rotation + deg_to_rad(float(6)) * delta
 		planet9.rotation = planet9.rotation + deg_to_rad(float(3)) * delta
 		planet10.rotation = planet10.rotation + deg_to_rad(float(1)) * delta

@@ -20,7 +20,6 @@ script = ExtResource("1_m8gcl")
 script = ExtResource("4_alve3")
 
 [node name="free_cam" type="Camera2D" parent="red_star"]
-position_smoothing_enabled = true
 script = ExtResource("4_5m2oj")
 
 [node name="planet1" type="Node2D" parent="red_star"]
