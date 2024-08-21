@@ -36,7 +36,6 @@ lock_rotation = true
 script = ExtResource("3_nicav")
 
 [node name="Camera2D" type="Camera2D" parent="planet/Node2D"]
-scale = Vector2(1, 1)
 zoom = Vector2(2, 2)
 
 [node name="Polygon2D" type="Polygon2D" parent="planet/Node2D"]
