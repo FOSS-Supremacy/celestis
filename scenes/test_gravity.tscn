@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://fg465ruu8nfy"]
+
+[ext_resource type="PackedScene" uid="uid://bt6wk7l13xiyc" path="res://scenes/universe.tscn" id="1_38t8b"]
+[ext_resource type="Script" path="res://scripts/test_gravity.gd" id="1_541aq"]
+[ext_resource type="OccluderPolygon2D" uid="uid://dhxlba7wqg83g" path="res://assets/planet_light_occluder.tres" id="2_i0g6r"]
+[ext_resource type="Texture2D" uid="uid://6jnwyetfrmc1" path="res://assets/star.jpg" id="3_kgigj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dpg8j"]
+bounce = 0.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hv3tn"]
+radius = 1222.01
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lrkc8"]
+radius = 37.0135
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cwpu8"]
+bounce = 0.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g16e1"]
+radius = 374.641
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_68xk2"]
+radius = 20.0
+
+[node name="test_gravity" type="Node2D"]
+
+[node name="universe" parent="." instance=ExtResource("1_38t8b")]
+
+[node name="star_test" type="RigidBody2D" parent="."]
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_dpg8j")
+can_sleep = false
+
+[node name="star" type="Node2D" parent="star_test"]
+
+[node name="Camera2D" type="Camera2D" parent="star_test/star"]
+
+[node name="Polygon2D" type="Polygon2D" parent="star_test/star"]
+scale = Vector2(0.766, 0.705)
+color = Color(0.991158, 0.000695971, 0.971711, 1)
+polygon = PackedVector2Array(-24.8042, -45.3901, -32.6371, -38.2979, -39.7261, -28.4746, -43.9825, -21.3559, -46.8201, -12.8136, -48.2389, -4.27118, -48.2389, 7.11865, -45.4013, 18.5085, -39.1645, 32.6241, -28.7206, 41.1348, -19.5822, 49.6454, -7.8329, 51.0638, 3.91645, 52.4823, 14.3603, 49.6454, 23.4987, 45.3901, 32.6371, 39.7163, 37.859, 32.6241, 41.7755, 26.9504, 44.3864, 19.8582, 46.8201, 12.8136, 48.2389, 4.27121, 48.2389, -8.54236, 45.4013, -17.0847, 42.5637, -24.2034, 36.5535, -34.0426, 27.4151, -43.9716, 15.6658, -51.0638, 0, -53.9007, -13.0548, -51.0638)
+
+[node name="PointLight2D" type="PointLight2D" parent="star_test/star"]
+scale = Vector2(2.27268, 1.9086)
+color = Color(0.596863, 0.00418699, 0.983795, 0.454902)
+energy = 16.0
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter_smooth = 0.2
+texture = ExtResource("3_kgigj")
+
+[node name="gravity2" type="Area2D" parent="star_test/star"]
+gravity_space_override = 1
+gravity_point = true
+gravity_point_center = Vector2(214, -70)
+gravity_direction = Vector2(214, -70)
+gravity = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="star_test/star/gravity2"]
+shape = SubResource("CircleShape2D_hv3tn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="star_test"]
+shape = SubResource("CircleShape2D_lrkc8")
+
+[node name="planet_test" type="RigidBody2D" parent="."]
+position = Vector2(-489, 0)
+mass = 100.0
+physics_material_override = SubResource("PhysicsMaterial_cwpu8")
+can_sleep = false
+lock_rotation = true
+
+[node name="planet" type="Node2D" parent="planet_test"]
+script = ExtResource("1_541aq")
+
+[node name="Polygon2D" type="Polygon2D" parent="planet_test/planet"]
+scale = Vector2(0.4, 0.4)
+color = Color(0.303233, 0.303233, 0.303233, 1)
+antialiased = true
+polygon = PackedVector2Array(-22.7006, -42.7119, -31.2134, -37.017, -39.7261, -28.4746, -43.9825, -21.3559, -46.8201, -12.8136, -48.2389, -4.27118, -48.2389, 7.11865, -45.4013, 18.5085, -39.7261, 28.4746, -32.6322, 35.5932, -22.7006, 42.7119, -11.3503, 46.9831, 0, 48.4068, 8.51276, 46.9831, 19.8631, 44.1356, 29.7946, 38.4407, 35.4698, 32.7458, 41.145, 25.6271, 43.8889, 20.1202, 46.8201, 12.8136, 48.2389, 4.27121, 48.2389, -8.54236, 45.4013, -17.0847, 42.5637, -24.2034, 31.2134, -37.017, 22.7007, -42.7119, 12.7692, -46.9831, -1.41876, -48.4068, -12.7691, -46.9831)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="planet_test/planet"]
+scale = Vector2(0.4, 0.4)
+occluder = ExtResource("2_i0g6r")
+
+[node name="gravity1" type="Area2D" parent="planet_test/planet"]
+gravity_space_override = 1
+gravity_point = true
+gravity_point_center = Vector2(214, -70)
+gravity_direction = Vector2(214, -70)
+gravity = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="planet_test/planet/gravity1"]
+shape = SubResource("CircleShape2D_g16e1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="planet_test"]
+shape = SubResource("CircleShape2D_68xk2")

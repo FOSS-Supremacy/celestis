@@ -1,13 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://oxmoxxmtd8ih"]
+[gd_scene load_steps=5 format=3 uid="uid://oxmoxxmtd8ih"]
 
+[ext_resource type="PhysicsMaterial" uid="uid://bwvlnf37xpy1m" path="res://tweaks/star_physics_material.tres" id="1_c3guv"]
 [ext_resource type="Texture2D" uid="uid://6jnwyetfrmc1" path="res://assets/star.jpg" id="1_y4est"]
+[ext_resource type="PackedScene" uid="uid://c7df4ww0r1fmv" path="res://scenes/star.tscn" id="2_pmomt"]
 
-[node name="red_star" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7qf7b"]
+radius = 37.0135
+
+[node name="green_star" type="RigidBody2D"]
+physics_material_override = ExtResource("1_c3guv")
+can_sleep = false
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 scale = Vector2(0.766, 0.705)
 color = Color(1.22252e-05, 0.980718, 0.24002, 1)
-polygon = PackedVector2Array(-22.7006, -42.7119, -31.2134, -37.017, -39.7261, -28.4746, -43.9825, -21.3559, -46.8201, -12.8136, -48.2389, -4.27118, -48.2389, 7.11865, -45.4013, 18.5085, -39.7261, 28.4746, -32.6322, 35.5932, -22.7006, 42.7119, -11.3503, 46.9831, 0, 48.4068, 8.51276, 46.9831, 19.8631, 44.1356, 29.7946, 38.4407, 35.4698, 32.7458, 41.145, 25.6271, 43.8889, 20.1202, 46.8201, 12.8136, 48.2389, 4.27121, 48.2389, -8.54236, 45.4013, -17.0847, 42.5637, -24.2034, 31.2134, -37.017, 22.7007, -42.7119, 12.7692, -46.9831, -1.41876, -48.4068, -12.7691, -46.9831)
+polygon = PackedVector2Array(-27.4151, -43.9716, -35.248, -36.8794, -39.7261, -28.4746, -43.9825, -21.3559, -46.8201, -12.8136, -48.2389, -4.27118, -48.2389, 7.11865, -45.4013, 18.5085, -39.1645, 31.2057, -31.3316, 41.1348, -20.8877, 46.8085, -9.13838, 51.0638, 1.30548, 52.4823, 11.7493, 51.0638, 22.1932, 46.8085, 31.3316, 39.7163, 37.859, 34.0426, 41.7755, 26.9504, 43.8889, 20.1202, 46.8201, 12.8136, 48.2389, 4.27121, 48.2389, -8.54236, 45.4013, -17.0847, 42.5637, -24.2034, 35.248, -36.8794, 24.8042, -45.3901, 13.0548, -51.0638, -1.30548, -53.9007, -15.6658, -49.6454)
 
 [node name="PointLight2D" type="PointLight2D" parent="Polygon2D"]
 scale = Vector2(2.96694, 2.70724)
@@ -15,6 +22,10 @@ color = Color(0.352849, 0.554891, 3.85046e-07, 0.454902)
 energy = 16.0
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
-shadow_filter = 1
 shadow_filter_smooth = 0.2
 texture = ExtResource("1_y4est")
+
+[node name="star" parent="." instance=ExtResource("2_pmomt")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7qf7b")

@@ -1,10 +1,93 @@
-[gd_scene load_steps=3 format=3 uid="uid://co0nh3kvveu6i"]
+[gd_scene load_steps=16 format=3 uid="uid://co0nh3kvveu6i"]
 
 [ext_resource type="PackedScene" uid="uid://bt6wk7l13xiyc" path="res://scenes/universe.tscn" id="1_l1df2"]
-[ext_resource type="PackedScene" uid="uid://by5wy2op8y63v" path="res://scenes/player.tscn" id="2_xohdq"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_5j7pi"]
+[ext_resource type="PhysicsMaterial" uid="uid://bi881x7u6ytn1" path="res://tweaks/planet_physics_material.tres" id="2_hgeid"]
+[ext_resource type="PackedScene" uid="uid://xvqnr58dv705" path="res://scenes/stars/blue_star.tscn" id="3_dumsi"]
+[ext_resource type="OccluderPolygon2D" uid="uid://dhxlba7wqg83g" path="res://assets/planet_light_occluder.tres" id="3_gmkt0"]
+[ext_resource type="PackedScene" uid="uid://oxmoxxmtd8ih" path="res://scenes/stars/green_star.tscn" id="4_8j1q1"]
+[ext_resource type="PackedScene" uid="uid://bsnkyp32dx3kw" path="res://scenes/stars/purple_star.tscn" id="5_oeull"]
+[ext_resource type="Shape2D" uid="uid://xhd3gcyxecfu" path="res://tweaks/planet_gravity.tres" id="5_u6l6y"]
+[ext_resource type="PackedScene" uid="uid://chu7ftfgs3q4t" path="res://scenes/stars/yellow_star.tscn" id="6_5660t"]
+[ext_resource type="Shape2D" uid="uid://bgyte2541rg5t" path="res://tweaks/planet_orbit1.tres" id="6_f0cqg"]
+[ext_resource type="Shape2D" uid="uid://ui8n1udb2jxm" path="res://tweaks/planet_orbit2.tres" id="7_26n76"]
+[ext_resource type="Shape2D" uid="uid://wxu2g6v53xsk" path="res://tweaks/planet_orbit3.tres" id="8_1vd24"]
+[ext_resource type="Shape2D" uid="uid://cq6h7pwgpirqb" path="res://tweaks/planet_orbit4.tres" id="9_j2rwj"]
+[ext_resource type="Shape2D" uid="uid://dansy3sasce1o" path="res://tweaks/planet_orbit5.tres" id="10_qvsm4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uynbf"]
+radius = 20.0
 
 [node name="single_player" type="Node2D"]
 
 [node name="universe" parent="." instance=ExtResource("1_l1df2")]
 
-[node name="player" parent="." instance=ExtResource("2_xohdq")]
+[node name="player" type="RigidBody2D" parent="."]
+physics_material_override = ExtResource("2_hgeid")
+can_sleep = false
+lock_rotation = true
+
+[node name="Node2D" type="Node2D" parent="player"]
+script = ExtResource("2_5j7pi")
+
+[node name="Camera2D" type="Camera2D" parent="player/Node2D"]
+zoom = Vector2(1.5, 1.5)
+
+[node name="Polygon2D" type="Polygon2D" parent="player/Node2D"]
+scale = Vector2(0.4, 0.4)
+color = Color(0.303233, 0.303233, 0.303233, 1)
+antialiased = true
+polygon = PackedVector2Array(-22.7006, -42.7119, -31.2134, -37.017, -39.7261, -28.4746, -43.9825, -21.3559, -46.8201, -12.8136, -48.2389, -4.27118, -48.2389, 7.11865, -45.4013, 18.5085, -39.7261, 28.4746, -32.6322, 35.5932, -22.7006, 42.7119, -11.3503, 46.9831, 0, 48.4068, 8.51276, 46.9831, 19.8631, 44.1356, 29.7946, 38.4407, 35.4698, 32.7458, 41.145, 25.6271, 43.8889, 20.1202, 46.8201, 12.8136, 48.2389, 4.27121, 48.2389, -8.54236, 45.4013, -17.0847, 42.5637, -24.2034, 31.2134, -37.017, 22.7007, -42.7119, 12.7692, -46.9831, -1.41876, -48.4068, -12.7691, -46.9831)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="player/Node2D/Polygon2D"]
+occluder = ExtResource("3_gmkt0")
+
+[node name="gravity" type="Area2D" parent="player/Node2D"]
+gravity_space_override = 1
+gravity_point = true
+gravity_point_center = Vector2(214, -70)
+gravity_direction = Vector2(214, -70)
+gravity = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/Node2D/gravity"]
+shape = ExtResource("5_u6l6y")
+
+[node name="orbit1" type="Area2D" parent="player/Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/Node2D/orbit1"]
+shape = ExtResource("6_f0cqg")
+
+[node name="orbit2" type="Area2D" parent="player/Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/Node2D/orbit2"]
+shape = ExtResource("7_26n76")
+
+[node name="orbit3" type="Area2D" parent="player/Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/Node2D/orbit3"]
+shape = ExtResource("8_1vd24")
+
+[node name="orbit4" type="Area2D" parent="player/Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/Node2D/orbit4"]
+shape = ExtResource("9_j2rwj")
+
+[node name="orbit5" type="Area2D" parent="player/Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/Node2D/orbit5"]
+shape = ExtResource("10_qvsm4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+shape = SubResource("CircleShape2D_uynbf")
+
+[node name="star1" parent="." instance=ExtResource("3_dumsi")]
+position = Vector2(4249, 0)
+
+[node name="star2" parent="." instance=ExtResource("4_8j1q1")]
+position = Vector2(-4400, 0)
+
+[node name="star3" parent="." instance=ExtResource("5_oeull")]
+position = Vector2(0, 6370)
+
+[node name="star4" parent="." instance=ExtResource("6_5660t")]
+position = Vector2(0, -6470)

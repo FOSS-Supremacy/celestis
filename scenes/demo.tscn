@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bt6wk7l13xiyc" path="res://scenes/universe.tscn" id="1_xb4o1"]
 [ext_resource type="PackedScene" uid="uid://fy684lghmvxp" path="res://scenes/stars/red_star.tscn" id="2_tgsie"]
 [ext_resource type="Script" path="res://scripts/free_cam.gd" id="4_5m2oj"]
-[ext_resource type="OccluderPolygon2D" uid="uid://dhxlba7wqg83g" path="res://assets/light_occluder.tres" id="4_8137b"]
+[ext_resource type="OccluderPolygon2D" uid="uid://dhxlba7wqg83g" path="res://assets/planet_light_occluder.tres" id="4_8137b"]
 [ext_resource type="Script" path="res://scripts/solar_system.gd" id="4_alve3"]
 [ext_resource type="PackedScene" uid="uid://xvqnr58dv705" path="res://scenes/stars/blue_star.tscn" id="6_a0j7j"]
 [ext_resource type="PackedScene" uid="uid://oxmoxxmtd8ih" path="res://scenes/stars/green_star.tscn" id="7_mabra"]
