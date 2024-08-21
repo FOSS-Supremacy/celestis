@@ -28,6 +28,7 @@ can_sleep = false
 lock_rotation = true
 
 [node name="Node2D" type="Node2D" parent="player"]
+scale = Vector2(0.4, 0.4)
 script = ExtResource("2_5j7pi")
 
 [node name="Camera2D" type="Camera2D" parent="player/Node2D"]
@@ -78,6 +79,7 @@ shape = ExtResource("9_j2rwj")
 shape = ExtResource("10_qvsm4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+scale = Vector2(0.4, 0.4)
 shape = SubResource("CircleShape2D_uynbf")
 
 [node name="star1" parent="." instance=ExtResource("3_dumsi")]

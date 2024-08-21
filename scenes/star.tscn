@@ -8,11 +8,12 @@
 [ext_resource type="Shape2D" uid="uid://c7lwe05sbtyms" path="res://tweaks/star_orbit6.tres" id="6_8avo6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ah4o"]
-radius = 3400.43
+radius = 1480.01
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ycmov"]
 
 [node name="star" type="Node2D"]
+scale = Vector2(5, 5)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 scale = Vector2(0.766, 0.705)

@@ -1,15 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://fg465ruu8nfy"]
+[gd_scene load_steps=15 format=3 uid="uid://fg465ruu8nfy"]
 
 [ext_resource type="PackedScene" uid="uid://bt6wk7l13xiyc" path="res://scenes/universe.tscn" id="1_38t8b"]
 [ext_resource type="Script" path="res://scripts/test_gravity.gd" id="1_541aq"]
 [ext_resource type="OccluderPolygon2D" uid="uid://dhxlba7wqg83g" path="res://assets/planet_light_occluder.tres" id="2_i0g6r"]
 [ext_resource type="Texture2D" uid="uid://6jnwyetfrmc1" path="res://assets/star.jpg" id="3_kgigj"]
+[ext_resource type="PhysicsMaterial" uid="uid://bnrp0sskihyu7" path="res://tweaks/asteroid_physics_material.tres" id="5_c32ra"]
+[ext_resource type="OccluderPolygon2D" uid="uid://0ecnuo1msnrn" path="res://assets/asteroid_light_occluder.tres" id="5_jcgk0"]
+[ext_resource type="Shape2D" uid="uid://du4lysgnbgttl" path="res://tweaks/asteroid_gravity.tres" id="6_8s86f"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dpg8j"]
 bounce = 0.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hv3tn"]
-radius = 1222.01
+radius = 1480.01
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lrkc8"]
 radius = 37.0135
@@ -23,6 +26,10 @@ radius = 374.641
 [sub_resource type="CircleShape2D" id="CircleShape2D_68xk2"]
 radius = 20.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bywbb"]
+radius = 90.0
+height = 380.0
+
 [node name="test_gravity" type="Node2D"]
 
 [node name="universe" parent="." instance=ExtResource("1_38t8b")]
@@ -31,10 +38,10 @@ radius = 20.0
 mass = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_dpg8j")
 can_sleep = false
+lock_rotation = true
 
 [node name="star" type="Node2D" parent="star_test"]
-
-[node name="Camera2D" type="Camera2D" parent="star_test/star"]
+scale = Vector2(5, 5)
 
 [node name="Polygon2D" type="Polygon2D" parent="star_test/star"]
 scale = Vector2(0.766, 0.705)
@@ -55,16 +62,17 @@ gravity_space_override = 1
 gravity_point = true
 gravity_point_center = Vector2(214, -70)
 gravity_direction = Vector2(214, -70)
-gravity = 50.0
+gravity = 15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="star_test/star/gravity2"]
 shape = SubResource("CircleShape2D_hv3tn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="star_test"]
+scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_lrkc8")
 
 [node name="planet_test" type="RigidBody2D" parent="."]
-position = Vector2(-489, 0)
+position = Vector2(9231, 0)
 mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_cwpu8")
 can_sleep = false
@@ -72,6 +80,10 @@ lock_rotation = true
 
 [node name="planet" type="Node2D" parent="planet_test"]
 script = ExtResource("1_541aq")
+
+[node name="Camera2D" type="Camera2D" parent="planet_test/planet"]
+scale = Vector2(2.5, 2.5)
+zoom = Vector2(2, 2)
 
 [node name="Polygon2D" type="Polygon2D" parent="planet_test/planet"]
 scale = Vector2(0.4, 0.4)
@@ -95,3 +107,32 @@ shape = SubResource("CircleShape2D_g16e1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="planet_test"]
 shape = SubResource("CircleShape2D_68xk2")
+
+[node name="asteroid" type="RigidBody2D" parent="."]
+position = Vector2(9231, 0)
+physics_material_override = ExtResource("5_c32ra")
+
+[node name="asteroid" type="Node2D" parent="asteroid"]
+scale = Vector2(0.03, 0.03)
+
+[node name="Polygon2D" type="Polygon2D" parent="asteroid/asteroid"]
+color = Color(0.301961, 0.301961, 0.301961, 1)
+polygon = PackedVector2Array(-76.6667, -56.6667, -103.333, 20, -123.333, 93.3333, -103.333, 146.667, -60, 156.667, 6.66667, 146.667, 53.3333, 83.3333, 80, 10, 103.333, -66.6667, 96.6667, -136.667, 63.3333, -186.667, 10, -173.333, -33.3333, -106.667)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="asteroid/asteroid/Polygon2D"]
+occluder = ExtResource("5_jcgk0")
+
+[node name="gravity" type="Area2D" parent="asteroid/asteroid"]
+gravity_space_override = 1
+gravity_point = true
+gravity_point_center = Vector2(214, -70)
+gravity_direction = Vector2(214, -70)
+gravity = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="asteroid/asteroid/gravity"]
+shape = ExtResource("6_8s86f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="asteroid"]
+rotation = 0.471239
+scale = Vector2(0.03, 0.03)
+shape = SubResource("CapsuleShape2D_bywbb")
