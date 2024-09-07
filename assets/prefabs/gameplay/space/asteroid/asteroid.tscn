@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://etdcw1ftppmc"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://bnrp0sskihyu7" path="res://tweaks/asteroid_physics_material.tres" id="1_yvrod"]
+[ext_resource type="Script" path="res://scripts/gameplay/systems/ObjectManager.gd" id="2_ao40s"]
+[ext_resource type="OccluderPolygon2D" uid="uid://0ecnuo1msnrn" path="res://assets/asteroid_light_occluder.tres" id="2_wy3vx"]
+[ext_resource type="Shape2D" uid="uid://du4lysgnbgttl" path="res://tweaks/asteroid_gravity.tres" id="3_8g3b6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bywbb"]
+radius = 90.0
+height = 380.0
+
+[node name="obj_asteroid" type="RigidBody2D"]
+position = Vector2(170, 0)
+physics_material_override = ExtResource("1_yvrod")
+can_sleep = false
+lock_rotation = true
+script = ExtResource("2_ao40s")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2(0.03, 0.03)
+color = Color(0.301961, 0.301961, 0.301961, 1)
+polygon = PackedVector2Array(-76.6667, -56.6667, -103.333, 20, -123.333, 93.3333, -103.333, 146.667, -60, 156.667, 6.66667, 146.667, 53.3333, 83.3333, 80, 10, 103.333, -66.6667, 96.6667, -136.667, 63.3333, -186.667, 10, -173.333, -33.3333, -106.667)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Polygon2D"]
+occluder = ExtResource("2_wy3vx")
+
+[node name="gravity" type="Area2D" parent="."]
+scale = Vector2(0.03, 0.03)
+gravity_space_override = 1
+gravity_point = true
+gravity_point_center = Vector2(214, -70)
+gravity_direction = Vector2(214, -70)
+gravity = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gravity"]
+shape = ExtResource("3_8g3b6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.471239
+scale = Vector2(0.03, 0.03)
+shape = SubResource("CapsuleShape2D_bywbb")
