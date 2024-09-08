@@ -1,13 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb3pbe0pkul1h"]
+[gd_scene load_steps=7 format=3 uid="uid://cb3pbe0pkul1h"]
 
+[ext_resource type="Script" path="res://scripts/resource/SpaceObjectSettings.gd" id="2_gp2og"]
 [ext_resource type="Script" path="res://scripts/gameplay/player/player.gd" id="2_i8ree"]
 [ext_resource type="OccluderPolygon2D" uid="uid://dhxlba7wqg83g" path="res://assets/planet_light_occluder.tres" id="3_vkstq"]
+
+[sub_resource type="Resource" id="Resource_avefi"]
+script = ExtResource("2_gp2og")
+object_mass = 10
+gravity_strength = 10000.0
+orbiting = false
+orbit_radius = 20.0
+orbit_speed = 50.0
+orbit_delay = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_er5iw"]
 radius = 20.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5d8it"]
+radius = 50.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("2_i8ree")
+resource = SubResource("Resource_avefi")
 
 [node name="sprite" type="Polygon2D" parent="."]
 scale = Vector2(0.16, 0.16)
@@ -25,3 +39,11 @@ zoom = Vector2(1.5, 1.5)
 [node name="collision" type="CollisionShape2D" parent="."]
 scale = Vector2(0.4, 0.4)
 shape = SubResource("CircleShape2D_er5iw")
+
+[node name="Orbit" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Orbit"]
+shape = SubResource("CircleShape2D_5d8it")
+
+[connection signal="body_entered" from="Orbit" to="." method="_orbit_entered"]
+[connection signal="body_exited" from="Orbit" to="." method="_orbit_exited"]
