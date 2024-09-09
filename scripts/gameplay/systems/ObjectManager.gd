@@ -1,49 +1,42 @@
 extends Node2D
+class_name Asteoroid
 
-@export var resource:SpaceObjectResource
+@export var resource: SpaceObjectResource
+@export var orbit_delay: float = 3.0
 var orbit_center: Node2D = null
 
-var angle:float = 0.0
+var angle: float = 0.0
 var orbit_timer: Timer
+var line:Line2D 
+
 var velocity: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
-	# Inicializa o Timer
+	# Timer
 	orbit_timer = Timer.new()
 	orbit_timer.one_shot = false
 	orbit_timer.autostart = false
+	orbit_timer.wait_time = orbit_delay
 	add_child(orbit_timer)
-	
 	orbit_timer.connect("timeout", Callable(self, "_on_Timer_timeout"))
-	#print("Timer configurado com um delay de ", resource.orbit_delay, " segundos.")
-	
+
 func _physics_process(delta: float) -> void:
 	orbit_controller(delta)
-	
-	if orbit_center:
-		orbit_timer.wait_time = orbit_center.resource.orbit_delay
 	
 	if not resource.orbiting:
 		apply_gravity(delta)
 
-func enter_orbit(center:Node2D) -> void:
-	#resource.orbiting = true
+func enter_orbit(center: Node2D) -> void:
 	if not resource.orbiting:
 		orbit_center = center
-		resource.orbit_radius = position.distance_to(center.position)
-		angle = (position - orbit_center.position).angle()
 		orbit_timer.start()
-		
-		#print("Timer iniciado para entrar em órbita.")
-	
-func orbit_controller(delta):
+
+func orbit_controller(delta: float) -> void:
 	if resource.orbiting and orbit_center:
 		angle += (resource.orbit_speed / resource.orbit_radius) * delta
 		angle = wrap_angle(angle)
-		
-		# new position around the central body
-		var offset_x = orbit_center.resource.orbit_radius * cos(angle)
-		var offset_y = orbit_center.resource.orbit_radius * sin(angle)
+		var offset_x = resource.orbit_radius * cos(angle)
+		var offset_y = resource.orbit_radius * sin(angle)
 		position = orbit_center.position + Vector2(offset_x, offset_y)
 
 func apply_gravity(delta: float) -> void:
@@ -54,8 +47,11 @@ func apply_gravity(delta: float) -> void:
 		var acceleration = direction * force
 		velocity += acceleration * delta
 		position += velocity * delta
-		
-# Function to ensure that the angle is within the range [0, 2*PI]
+	
+		if distance < resource.orbit_radius * 0.95:
+			orbit_timer.start()
+
+# Ensures the angle is in the range [0, 2*PI]
 func wrap_angle(angle: float) -> float:
 	var two_pi = 2 * PI
 	while angle < 0:
@@ -64,9 +60,8 @@ func wrap_angle(angle: float) -> float:
 		angle -= two_pi
 	return angle
 
+# When the Timer ends, start the orbit
 func _on_Timer_timeout() -> void:
 	resource.orbiting = true
-	
-	if orbit_center is Player:
-		orbit_center.orbit_objects.append(self)
-	#print("Tempo acabou!")
+	resource.orbit_radius = position.distance_to(orbit_center.position)
+	orbit_timer.stop()
