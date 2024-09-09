@@ -7,7 +7,6 @@ var orbit_center: Node2D = null
 
 var angle: float = 0.0
 var orbit_timer: Timer
-var line:Line2D 
 
 var velocity: Vector2 = Vector2.ZERO
 
