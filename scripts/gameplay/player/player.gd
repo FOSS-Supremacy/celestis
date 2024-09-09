@@ -16,7 +16,7 @@ var orbit_objects:Array = []
 var selected_object:Node2D = null
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("eat_object"):
+	if event.is_action_pressed("absorb_body"):
 		suck_objects()
 		
 func _physics_process(delta: float) -> void:
