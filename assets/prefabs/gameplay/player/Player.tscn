@@ -1,13 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cb3pbe0pkul1h"]
+[gd_scene load_steps=9 format=3 uid="uid://cb3pbe0pkul1h"]
 
 [ext_resource type="Script" path="res://scripts/resource/SpaceObjectSettings.gd" id="2_gp2og"]
 [ext_resource type="Script" path="res://scripts/gameplay/player/player.gd" id="2_i8ree"]
 [ext_resource type="OccluderPolygon2D" uid="uid://dhxlba7wqg83g" path="res://assets/planet_light_occluder.tres" id="3_vkstq"]
+[ext_resource type="Script" path="res://scripts/gameplay/systems/GravityController.gd" id="4_6bkdi"]
+[ext_resource type="Script" path="res://scripts/gameplay/player/PlayerCameraController.gd" id="5_cwes0"]
 
 [sub_resource type="Resource" id="Resource_avefi"]
 script = ExtResource("2_gp2og")
 object_mass = 10
-gravity_strength = 10000.0
+gravity_strength = 1000.0
 orbiting = false
 orbit_radius = 20.0
 orbit_speed = 50.0
@@ -19,9 +21,10 @@ radius = 20.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_5d8it"]
 radius = 100.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_controller")]
 script = ExtResource("2_i8ree")
 resource = SubResource("Resource_avefi")
+gravity_controller = NodePath("GravityController")
 acceleration = 400.0
 max_speed = 600.0
 
@@ -34,10 +37,6 @@ polygon = PackedVector2Array(-22.7006, -42.7119, -31.2134, -37.017, -39.7261, -2
 [node name="LightOccluder2D" type="LightOccluder2D" parent="sprite"]
 occluder = ExtResource("3_vkstq")
 
-[node name="camera" type="Camera2D" parent="."]
-scale = Vector2(0.4, 0.4)
-zoom = Vector2(1.5, 1.5)
-
 [node name="collision" type="CollisionShape2D" parent="."]
 scale = Vector2(0.4, 0.4)
 shape = SubResource("CircleShape2D_er5iw")
@@ -46,6 +45,15 @@ shape = SubResource("CircleShape2D_er5iw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Orbit"]
 shape = SubResource("CircleShape2D_5d8it")
+
+[node name="PlayerCameraController" type="Camera2D" parent="."]
+script = ExtResource("5_cwes0")
+active_zoom = false
+min_zoom = 0.2
+zoom_speed = 0.2
+
+[node name="GravityController" type="Node" parent="."]
+script = ExtResource("4_6bkdi")
 
 [connection signal="body_entered" from="Orbit" to="." method="_orbit_entered"]
 [connection signal="body_exited" from="Orbit" to="." method="_orbit_exited"]

@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/multiplayer.gd" id="1_s6cxa"]
 [ext_resource type="PackedScene" uid="uid://bt6wk7l13xiyc" path="res://scenes/universe.tscn" id="2_3i8wi"]
-[ext_resource type="PackedScene" uid="uid://djwunliuh7opd" path="res://scenes/planet.tscn" id="2_vrvp3"]
+[ext_resource type="PackedScene" uid="uid://djwunliuh7opd" path="res://assets/prefabs/gameplay/space/planets/planet.tscn" id="2_vrvp3"]
+
 
 [node name="multiplayer" type="Node2D"]
 script = ExtResource("1_s6cxa")
