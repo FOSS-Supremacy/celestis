@@ -1,72 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bk0nyitl8ksom"]
+[gd_scene load_steps=5 format=3 uid="uid://bk0nyitl8ksom"]
 
 [ext_resource type="PackedScene" uid="uid://bt6wk7l13xiyc" path="res://scenes/universe.tscn" id="1_6px6t"]
 [ext_resource type="PackedScene" uid="uid://etdcw1ftppmc" path="res://assets/prefabs/gameplay/space/asteroid/asteroid.tscn" id="2_gpo2n"]
-[ext_resource type="Script" path="res://scripts/resource/SpaceObjectSettings.gd" id="3_vpnbn"]
+[ext_resource type="PackedScene" uid="uid://djwunliuh7opd" path="res://assets/prefabs/gameplay/space/planets/planet.tscn" id="5_w437s"]
 [ext_resource type="PackedScene" uid="uid://cb3pbe0pkul1h" path="res://assets/prefabs/gameplay/player/Player.tscn" id="14_v7w3n"]
-
-[sub_resource type="Resource" id="Resource_t2k6p"]
-script = ExtResource("3_vpnbn")
-object_mass = 10
-gravity_strength = 1000.0
-orbiting = false
-orbit_radius = 20.0
-orbit_speed = 50.0
-pull_speed = 100.0
-
-[sub_resource type="Resource" id="Resource_yskn6"]
-script = ExtResource("3_vpnbn")
-object_mass = 10
-gravity_strength = 1000.0
-orbiting = false
-orbit_radius = 20.0
-orbit_speed = 50.0
-pull_speed = 100.0
-
-[sub_resource type="Resource" id="Resource_oxk0h"]
-script = ExtResource("3_vpnbn")
-object_mass = 10
-gravity_strength = 1000.0
-orbiting = false
-orbit_radius = 20.0
-orbit_speed = 50.0
-pull_speed = 100.0
-
-[sub_resource type="Resource" id="Resource_lhkn7"]
-script = ExtResource("3_vpnbn")
-object_mass = 10
-gravity_strength = 1000.0
-orbiting = false
-orbit_radius = 20.0
-orbit_speed = 50.0
-pull_speed = 100.0
-
-[sub_resource type="Resource" id="Resource_t2mjy"]
-script = ExtResource("3_vpnbn")
-object_mass = 10
-gravity_strength = 1000.0
-orbiting = false
-orbit_radius = 20.0
-orbit_speed = 50.0
-pull_speed = 100.0
-
-[sub_resource type="Resource" id="Resource_owce4"]
-script = ExtResource("3_vpnbn")
-object_mass = 10
-gravity_strength = 1000.0
-orbiting = false
-orbit_radius = 20.0
-orbit_speed = 50.0
-pull_speed = 100.0
-
-[sub_resource type="Resource" id="Resource_c37km"]
-script = ExtResource("3_vpnbn")
-object_mass = 10
-gravity_strength = 1000.0
-orbiting = false
-orbit_radius = 20.0
-orbit_speed = 50.0
-pull_speed = 100.0
 
 [node name="tests" type="Node2D"]
 
@@ -74,34 +11,30 @@ pull_speed = 100.0
 
 [node name="asteroid" parent="." instance=ExtResource("2_gpo2n")]
 position = Vector2(203, -34)
-resource = SubResource("Resource_t2k6p")
 
 [node name="asteroid2" parent="." instance=ExtResource("2_gpo2n")]
 position = Vector2(29, -107)
-resource = SubResource("Resource_yskn6")
 
 [node name="asteroid3" parent="." instance=ExtResource("2_gpo2n")]
 position = Vector2(284, -134)
-resource = SubResource("Resource_oxk0h")
 
 [node name="asteroid4" parent="." instance=ExtResource("2_gpo2n")]
 position = Vector2(20, 126)
-resource = SubResource("Resource_lhkn7")
 
 [node name="asteroid5" parent="." instance=ExtResource("2_gpo2n")]
 position = Vector2(353, 80)
-resource = SubResource("Resource_t2mjy")
 
 [node name="asteroid6" parent="." instance=ExtResource("2_gpo2n")]
 position = Vector2(-25, 24)
-resource = SubResource("Resource_owce4")
 
 [node name="asteroid7" parent="." instance=ExtResource("2_gpo2n")]
 position = Vector2(368, -71)
-resource = SubResource("Resource_c37km")
 
 [node name="Player" parent="." instance=ExtResource("14_v7w3n")]
 position = Vector2(147, 10)
 acceleration = 100.0
 max_speed = 100.0
 drag = 5.0
+
+[node name="planet" parent="." instance=ExtResource("5_w437s")]
+position = Vector2(-292, 94)

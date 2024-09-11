@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://etdcw1ftppmc"]
+[gd_scene load_steps=5 format=3 uid="uid://etdcw1ftppmc"]
 
-[ext_resource type="PhysicsMaterial" uid="uid://bnrp0sskihyu7" path="res://tweaks/asteroid_physics_material.tres" id="1_yvrod"]
 [ext_resource type="Script" path="res://scripts/gameplay/space/Asteroid.gd" id="2_ehtvs"]
 [ext_resource type="OccluderPolygon2D" uid="uid://0ecnuo1msnrn" path="res://assets/asteroid_light_occluder.tres" id="2_wy3vx"]
 [ext_resource type="Shape2D" uid="uid://du4lysgnbgttl" path="res://tweaks/asteroid_gravity.tres" id="3_8g3b6"]
@@ -9,11 +8,8 @@
 radius = 90.0
 height = 380.0
 
-[node name="obj_asteroid" type="RigidBody2D" groups=["OBJECT_DESTROYED"]]
+[node name="obj_asteroid" type="CharacterBody2D" groups=["OBJECT_DESTROYED", "SPACE_OBJECT"]]
 position = Vector2(170, 0)
-physics_material_override = ExtResource("1_yvrod")
-can_sleep = false
-lock_rotation = true
 script = ExtResource("2_ehtvs")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
@@ -35,9 +31,16 @@ gravity = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="gravity"]
 shape = ExtResource("3_8g3b6")
 
+[node name="CollisionDetect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CollisionDetect"]
+rotation = 0.471239
+scale = Vector2(0.03, 0.03)
+shape = SubResource("CapsuleShape2D_bywbb")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 0.471239
 scale = Vector2(0.03, 0.03)
 shape = SubResource("CapsuleShape2D_bywbb")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="CollisionDetect" to="." method="_on_collision_detect_body_entered"]

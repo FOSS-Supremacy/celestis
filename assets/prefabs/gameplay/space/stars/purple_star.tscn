@@ -2,7 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://6jnwyetfrmc1" path="res://assets/star.jpg" id="1_l4usd"]
 [ext_resource type="PhysicsMaterial" uid="uid://bwvlnf37xpy1m" path="res://tweaks/star_physics_material.tres" id="1_pwp5o"]
-[ext_resource type="PackedScene" uid="uid://c7df4ww0r1fmv" path="res://scenes/star.tscn" id="2_2jvmj"]
+[ext_resource type="PackedScene" uid="uid://c7df4ww0r1fmv" path="res://assets/prefabs/gameplay/space/stars/star.tscn" id="2_2jvmj"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ucllp"]
 radius = 37.0135
