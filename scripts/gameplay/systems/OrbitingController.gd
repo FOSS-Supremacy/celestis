@@ -1,5 +1,5 @@
-extends Node2D
-class_name OrbitingObject
+extends Node
+class_name OrbitController
 
 @export var gravity_strength: float = 1000.0 # Gravitational force
 @export var orbit_speed: float = 50.0  # Orbital speed

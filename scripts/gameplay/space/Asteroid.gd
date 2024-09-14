@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-@export var OrbitController:OrbitingObject
-
 func _physics_process(delta: float) -> void:
 	position += velocity * delta
 

@@ -72,7 +72,7 @@ func _orbit_entered(body: Node2D) -> void:
 		if not body in gravity_controller.orbit_objects:
 			gravity_controller.orbit_objects.append(body)
 			gravity_controller.set_info(self, gravity_controller.orbit_objects)
-			$OrbitingObject.enter_orbit(self, body)
+			$OrbitController.enter_orbit(self, body)
 
 func _orbit_exited(body: Node2D) -> void:
 	if body != self and body is CharacterBody2D:
