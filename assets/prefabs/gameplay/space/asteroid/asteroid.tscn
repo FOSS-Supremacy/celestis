@@ -8,9 +8,10 @@
 radius = 90.0
 height = 380.0
 
-[node name="obj_asteroid" type="CharacterBody2D" groups=["OBJECT_DESTROYED", "SPACE_OBJECT"]]
+[node name="obj_asteroid" type="CharacterBody2D" node_paths=PackedStringArray("OrbitController") groups=["OBJECT_DESTROYED", "SPACE_OBJECT"]]
 position = Vector2(170, 0)
 script = ExtResource("2_ehtvs")
+OrbitController = NodePath("")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 scale = Vector2(0.03, 0.03)

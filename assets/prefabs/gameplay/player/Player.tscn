@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cb3pbe0pkul1h"]
+[gd_scene load_steps=10 format=3 uid="uid://cb3pbe0pkul1h"]
 
 [ext_resource type="Script" path="res://scripts/resource/SpaceObjectSettings.gd" id="2_gp2og"]
 [ext_resource type="Script" path="res://scripts/gameplay/player/player.gd" id="2_i8ree"]
 [ext_resource type="OccluderPolygon2D" uid="uid://dhxlba7wqg83g" path="res://assets/planet_light_occluder.tres" id="3_vkstq"]
 [ext_resource type="Script" path="res://scripts/gameplay/systems/GravityController.gd" id="4_6bkdi"]
 [ext_resource type="Script" path="res://scripts/gameplay/player/PlayerCameraController.gd" id="5_cwes0"]
+[ext_resource type="Script" path="res://scripts/gameplay/systems/OrbitingController.gd" id="6_1pj3v"]
 
 [sub_resource type="Resource" id="Resource_avefi"]
 script = ExtResource("2_gp2og")
@@ -48,12 +49,14 @@ shape = SubResource("CircleShape2D_5d8it")
 
 [node name="PlayerCameraController" type="Camera2D" parent="."]
 script = ExtResource("5_cwes0")
-active_zoom = false
 min_zoom = 0.2
 zoom_speed = 0.2
 
 [node name="GravityController" type="Node" parent="."]
 script = ExtResource("4_6bkdi")
+
+[node name="OrbitingObject" type="Node2D" parent="."]
+script = ExtResource("6_1pj3v")
 
 [connection signal="body_entered" from="Orbit" to="." method="_orbit_entered"]
 [connection signal="body_exited" from="Orbit" to="." method="_orbit_exited"]
