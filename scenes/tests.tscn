@@ -31,7 +31,7 @@ position = Vector2(-25, 24)
 position = Vector2(368, -71)
 
 [node name="Player" parent="." instance=ExtResource("14_v7w3n")]
-position = Vector2(147, 10)
+position = Vector2(195, 88)
 acceleration = 100.0
 max_speed = 100.0
 drag = 5.0
